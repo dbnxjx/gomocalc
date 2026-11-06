@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>五子棋计算器</title>
+  <meta name="description" content="把 Rapfi 和 KataGo 装进 Android 手机和平板。对局结束就能复盘，分析不需要联网。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="#top" aria-label="五子棋计算器 首页">
+      <span class="logo-stones" aria-hidden="true"><i></i><i></i></span>
+      五子棋计算器
+    </a>
+    <nav aria-label="页面导航">
+      <a href="#features">特色</a>
+      <a href="#start">怎么用</a>
+      <a href="#perf">性能</a>
+      <a class="nav-cta" href="#download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">Android 手机和平板 · 本地运行</p>
+      <h1>口袋里的<br />五子棋引擎</h1>
+      <p class="lead">把 Rapfi 和 KataGo 两个强引擎装进你的设备。对局一结束就能拿出来复盘，不用联网，也不按时长付费。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#download">下载 Android 版</a>
+        <a class="btn btn-ghost" href="#start">看看怎么用</a>
+      </div>
+    </div>
+
+    <div class="demo" aria-label="功能演示棋盘">
+      <div class="demo-tabs" role="group" aria-label="切换演示内容">
+        <button type="button" data-mode="rapfi" aria-pressed="true">路线估值</button>
+        <button type="button" data-mode="katago" aria-pressed="false">胜率热力</button>
+        <button type="button" data-mode="forbid" aria-pressed="false">禁手提示</button>
+        <button type="button" data-mode="kill" aria-pressed="false">杀点标注</button>
+      </div>
+      <div class="board-box" id="board"><noscript><img src="img/forbid.jpg" alt="棋盘截图" /></noscript></div>
+      <div class="demo-read" id="reading" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="主要数据">
+  <div class="wrap facts-row">
+    <div><b>2 个</b><span>本地引擎，随时切换</span></div>
+    <div><b>180 万</b><span>Rapfi 每秒节点数</span></div>
+    <div><b>14.6</b><span>KataGo 每秒 visits</span></div>
+    <div><b>2.6 秒内</b><span>冷启动到可以分析</span></div>
+  </div>
+  <p class="wrap facts-note">在小米平板 7S Pro 上实测，其他设备的结果会不同。</p>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>同一局面，看两种答案</h2>
+      <p>Rapfi 搜索快，适合追具体路线。KataGo 用神经网络，适合判断每个候选点的胜率。在设置里切换即可。</p>
+    </div>
+    <div class="duo">
+      <figure>
+        <div class="tablet"><img src="img/rapfi.jpg" width="1600" height="874" loading="lazy" alt="Rapfi 分析界面，棋盘上有估值，右侧列出四条路线" /></div>
+        <figcaption><b>Rapfi</b>多条路线同时对比，看深度、估值和变化。</figcaption>
+      </figure>
+      <figure>
+        <div class="tablet"><img src="img/katago.jpg" width="1600" height="874" loading="lazy" alt="KataGo 分析界面，棋盘上有候选点胜率，右侧列出候选表" /></div>
+        <figcaption><b>KataGo</b>候选点直接标在棋盘上，胜率和 visits 一眼可见。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap split">
+    <div class="split-copy">
+      <h2>一盘棋，试多种走法</h2>
+      <p>后退一手再走另一手，就多了一条分支。点落子树上的节点，棋盘立刻跳回那个局面。</p>
+      <ul class="checks">
+        <li>棋谱自动保存，不怕忘记</li>
+        <li>保存为 SGF，只记录真实落子和分支</li>
+        <li>可以新建、切换、改名和删除棋谱</li>
+      </ul>
+    </div>
+    <div class="split-media"><div class="tablet"><img src="img/tree.jpg" width="1100" height="710" loading="lazy" alt="分支很多的落子树，橙色圆圈是当前局面" /></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split reverse">
+    <div class="split-copy">
+      <h2>算过的结果，直接留在棋盘上</h2>
+      <p>打开分析数据库后，Rapfi 证明出的胜负会被保存。下次遇到相同局面，<strong class="win">+M</strong> 和 <strong class="loss">-M</strong> 会直接标在对应的空点上。</p>
+      <ul class="checks">
+        <li>可以建多个数据库，按需切换</li>
+        <li>支持导入、导出，也能设为只读</li>
+        <li>记录数在分析时实时更新</li>
+      </ul>
+    </div>
+    <div class="split-media db-stack">
+      <div class="tablet"><img src="img/kill.jpg" width="900" height="660" loading="lazy" alt="棋盘空点上标着 +M13" /></div>
+      <div class="tablet small"><img src="img/dbpicker.jpg" width="900" height="503" loading="lazy" alt="数据库列表" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="section tint">
+  <div class="wrap split">
+    <div class="split-copy">
+      <h2>手机平板，都用得顺手</h2>
+      <p>可以选横屏、竖屏或自适应。平板横屏时棋盘固定在左半边，分析和落子树在右边；手机竖屏时上下排列。</p>
+      <ul class="checks">
+        <li>分析和落子树可以分别隐藏</li>
+        <li>支持无禁手、长连不赢、有禁手、一手交换</li>
+        <li>也能打开 AI 执黑或执白，直接对弈</li>
+      </ul>
+    </div>
+    <div class="split-media devices">
+      <div class="tablet"><img src="img/main.jpg" width="1800" height="1202" loading="lazy" alt="平板横屏界面" /></div>
+      <div class="phone"><img src="img/portrait.jpg" width="700" height="1457" loading="lazy" alt="手机竖屏界面" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>四步开始分析</h2>
+      <p>不用注册，也不用配置。装好就能用。</p>
+    </div>
+    <ol class="steps">
+      <li><span class="stone black">1</span><h3>下载安装</h3><p>从<a href="#download">发布页</a>下载 APK，按系统提示允许安装。</p></li>
+      <li><span class="stone white">2</span><h3>摆出局面</h3><p>点击棋盘交叉点落子，黑白自动交替。</p></li>
+      <li><span class="stone black">3</span><h3>开始分析</h3><p>按钮变成绿色 ▶ 后点一下，结果会实时更新。</p></li>
+      <li><span class="stone white">4</span><h3>停止复盘</h3><p>点红色 ■ 停止。Rapfi 会落下最佳点，不想要就点 ‹ 后退。</p></li>
+    </ol>
+
+    <h3 class="guide-title">详细使用说明</h3>
+    <div class="guide">
+      <details open>
+        <summary>工具栏按钮</summary>
+        <div class="tools">
+          <div><img src="img/btn-new.jpg" width="122" height="100" alt="" /><span>新建棋谱</span></div>
+          <div><img src="img/btn-first.jpg" width="123" height="100" alt="" /><span>回到开局</span></div>
+          <div><img src="img/btn-prev.jpg" width="123" height="100" alt="" /><span>后退一手</span></div>
+          <div><img src="img/btn-next.jpg" width="122" height="100" alt="" /><span>前进一手</span></div>
+          <div><img src="img/btn-last.jpg" width="122" height="100" alt="" /><span>走到最后</span></div>
+          <div><img src="img/btn-play.jpg" width="123" height="100" alt="" /><span>开始计算</span></div>
+          <div><img src="img/btn-stop.jpg" width="123" height="100" alt="" /><span>停止计算</span></div>
+          <div><img src="img/btn-index.jpg" width="122" height="100" alt="" /><span>显示或隐藏序号</span></div>
+        </div>
+        <p class="hint">隐藏序号后，最后一手用红点标出。</p>
+      </details>
+
+      <details>
+        <summary>读懂 Rapfi 的分析</summary>
+        <div class="guide-body">
+          <img src="img/rapfi.jpg" width="1600" height="874" loading="lazy" alt="Rapfi 分析界面" />
+          <dl>
+            <dt>深度 24-57</dt><dd>常规搜索 24 层，最深延伸到 57 层。</dd>
+            <dt>评估 425</dt><dd>数字越大，对当前行棋方越有利。</dd>
+            <dt>+M13 / -M16</dt><dd>13 手内必胜 / 16 手内必败。</dd>
+            <dt>路线</dt><dd>太长时按住左右滑动。“多点分析”决定同时显示几条。</dd>
+          </dl>
+        </div>
+      </details>
+
+      <details>
+        <summary>使用 KataGo</summary>
+        <div class="guide-body">
+          <img src="img/katago.jpg" width="1600" height="874" loading="lazy" alt="KataGo 分析界面" />
+          <dl>
+            <dt>切换</dt><dd>进入设置 → 思考引擎，选 KataGo，等状态变成“已连接”。首次启动要复制模型，会慢一些。</dd>
+            <dt>看圆点</dt><dd>蓝色是第一候选，绿色是其他候选。圆点内是黑方胜率和 visits，左上角是序号。</dd>
+            <dt>提速</dt><dd>在设置里点“自动测速并保存”，选出这台设备最快的配置。</dd>
+          </dl>
+        </div>
+      </details>
+
+      <details>
+        <summary>规则和禁手</summary>
+        <div class="guide-body">
+          <img src="img/forbid.jpg" width="1100" height="616" loading="lazy" alt="禁手点显示红色叉号并弹出提示" />
+          <dl>
+            <dt>选规则</dt><dd>进入设置 → 规则，共四种。</dd>
+            <dt>看禁手</dt><dd>选“有禁手”后，轮到黑方时禁手点显示 ✕。</dd>
+            <dt>点禁手</dt><dd>会弹出提示，这一手不会落下。</dd>
+          </dl>
+        </div>
+      </details>
+
+      <details>
+        <summary>分析数据库</summary>
+        <div class="guide-body">
+          <img src="img/dbpicker.jpg" width="900" height="503" loading="lazy" alt="数据库列表，绿勾表示正在使用" />
+          <dl>
+            <dt>打开</dt><dd>进入设置 → 分析数据库 → 使用方式，选“使用数据库”。选“只读数据库”时不写入新记录。</dd>
+            <dt>管理</dt><dd>点“当前数据库”可以切换、新建、导入、导出和删除，长按名称可以改名。</dd>
+            <dt>杀点</dt><dd>分析停止后显示。红色 +M 表示走这里能赢，蓝色 -M 表示走这里会输。</dd>
+          </dl>
+        </div>
+      </details>
+
+      <details>
+        <summary>管理棋谱和落子树</summary>
+        <div class="guide-body">
+          <img src="img/records.jpg" width="1100" height="432" loading="lazy" alt="棋谱下拉列表" />
+          <dl>
+            <dt>切换</dt><dd>点落子树上方的下拉框。</dd>
+            <dt>改名和删除</dt><dd>长按棋谱名改名，点“删除”删除。</dd>
+            <dt>删分支</dt><dd>双击落子树的节点，可以删除它和后面的分支。</dd>
+          </dl>
+        </div>
+      </details>
+
+      <details>
+        <summary>显示和布局设置</summary>
+        <div class="guide-body">
+          <img src="img/set-disp.jpg" width="1100" height="962" loading="lazy" alt="设置页的引擎参数和显示开关" />
+          <dl>
+            <dt>布局方式</dt><dd>横屏和竖屏会锁定屏幕方向，自适应跟随设备旋转。</dd>
+            <dt>显示开关</dt><dd>坐标、分析、落子树、禁手、杀点都可以单独关闭。</dd>
+            <dt>性能参数</dt><dd>线程数和置换表可以按设备调整，占用过高时调小。</dd>
+          </dl>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="perf">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>在设备上跑，也够快</h2>
+      <p>测试设备是小米平板 7S Pro（玄戒 O1，16 GB），Release 1.1.0。</p>
+    </div>
+    <div class="perf">
+      <div><b>180 万</b><h3>Rapfi 开局 节点/秒</h3><p>8 子中局约 96 万。10 线程，多点分析 4，1 GB 置换表。</p></div>
+      <div><b>0.4 秒内</b><h3>Rapfi 到达深度 12</h3><p>实测 140–365 毫秒。</p></div>
+      <div><b>14.6</b><h3>KataGo visits/秒</h3><p>Mali-G925 GPU，三个全新局面的平均值。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap faq-grid">
+    <h2>常见问题</h2>
+    <div class="faq">
+      <details><summary>分析要联网吗？</summary><p>不需要。两个引擎和权重都在安装包里，断网也能分析。</p></details>
+      <details><summary>按停止后，棋盘上多了一颗棋？</summary><p>这是 Rapfi 的行为：停止时落下当前最佳点，点 ‹ 后退可以撤回。KataGo 不会自动落子。</p></details>
+      <details><summary>空棋盘点计算，为什么马上走了天元？</summary><p>Rapfi 在空棋盘上不进入搜索，直接走 H8。落下第一手后再计算即可。</p></details>
+      <details><summary>支持什么设备？</summary><p>Android 7.0 及以上的 64 位设备，安装包约 300 MB。</p></details>
+      <details><summary>内存占用很高怎么办？</summary><p>Rapfi 的占用主要来自置换表，到设置里调小。KataGo 进程约占 2.3 GB，内存较小的设备建议用 Rapfi。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section download" id="download">
+  <div class="wrap">
+    <h2>下载五子棋计算器</h2>
+    <div class="dl-grid">
+      <a class="dl-card" href="https://github.com/dbnxjx/gomoku_calc/releases/tag/v1.0.0" target="_blank" rel="noopener">
+        <span class="dl-tag">推荐</span>
+        <h3>GitHub 发布页</h3>
+        <p>在 Assets 里下载 Gomoku-Calc-v1.0.apk（303 MB）。</p>
+        <span class="dl-go">前往 GitHub →</span>
+      </a>
+      <a class="dl-card" href="https://gitee.com/z_z123456/gomoku_clac/releases/tag/v1.0.0" target="_blank" rel="noopener">
+        <span class="dl-tag alt">国内访问</span>
+        <h3>Gitee 发布页</h3>
+        <p>附件只有源码，APK 通过页面内的网盘链接下载。</p>
+        <span class="dl-go">前往 Gitee →</span>
+      </a>
+    </div>
+    <div class="version-note">
+      <h3>当前发布版是 v1.0.0（2026 年 10 月 27 日）</h3>
+      <p>本页介绍的是最新代码。下面这些功能在发布后才加入，要等下一个版本：布局方式和显示落子树开关、棋盘上的数据库杀点标注、数据库改名和记录数实时刷新、路线单行滑动。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">软件工程课程项目。基于开源项目 Rapfi、KataGo 和 Gomoku Calculator 开发。</div>
+</footer>
+
+<script src="board.js"></script>
+</body>
+</html>

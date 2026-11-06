@@ -173,8 +173,6 @@ dd { margin: 2px 0 14px; color: var(--muted); font-size: 16px; }
 .dl-card h3 { margin-top: 16px; font-size: clamp(24px, 2.6vw, 32px); }
 .dl-card p { margin-top: 8px; color: #c7cfd2; flex: 1; }
 .dl-go { margin-top: 20px; color: var(--amber-bright); font-weight: 700; }
-.version-note { margin-top: 16px; padding: 18px 22px; background: rgba(255, 255, 255, 0.55); border-radius: var(--radius); color: var(--ink); font-size: 16px; }
-.version-note h3 { font-size: 17px; margin-bottom: 4px; }
 
 .site-footer { padding-block: 24px; background: var(--ink); color: #b5bfc2; font-size: 14px; }
 
